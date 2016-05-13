@@ -14,8 +14,8 @@ if (isset($_POST['callFunction'])) {
 			break;
 
 		case 'abstimmen':
-			if(isset($_POST['essen2']))	abstimmen($_POST['u_ID'], $_POST['essen1'], $_POST['essen2'], $_POST['datum']);
-			else abstimmen($_POST['u_ID'], $_POST['essen1'], "", $_POST['datum']);
+			if(isset($_POST['essen2']))	abstimmen($_POST['essen1'], $_POST['essen2'], $_POST['datum']);
+			else abstimmen($_POST['essen1'], "", $_POST['datum']);
 			break;
 
 		case 'insertEssen':
@@ -85,6 +85,9 @@ if (isset($_POST['callFunction'])) {
 		case 'chat_speichern':
 			chat_speichern(htmlspecialchars($_POST['nachricht']));
 			break;
+		case 'chat_delete':
+			chat_delete();
+			break;
 		default:
 			echo "Keine Funktion zum Aufrufen gefunden!";
 			break;
@@ -144,7 +147,7 @@ function reloadEssen() {
 	echo json_encode($sqlSelEssenRes);
 }
 
-function abstimmen($u_ID, $essen1, $essen2, $datum) {
+function abstimmen($essen1, $essen2, $datum) {
 	require('includes/includeDatabase.php');
 
 	/*	$stmt1 = $pdo->prepare("INSERT INTO person (name) VALUES (:name)");
@@ -172,17 +175,17 @@ function abstimmen($u_ID, $essen1, $essen2, $datum) {
 
 	if($essen2 == "") {
 		$stmt9 = $pdo->prepare("INSERT INTO abstimmen (u_ID, datum, e_ID1, g_ID) VALUES (:u_ID, :datum, :e_ID1, :g_ID)");
-		$stmt9->execute(array('u_ID' => $u_ID[0], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'g_ID' => $_SESSION['g_ID']));
+		$stmt9->execute(array('u_ID' => $_SESSION['userid'], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'g_ID' => $_SESSION['g_ID']));
 
 		$stmt10 = $pdo->prepare("UPDATE abstimmen SET e_ID1 = :e_ID1, e_ID2 = null, g_ID = :g_ID WHERE datum = :datum AND u_ID = :u_ID");
-		$stmt10->execute(array('u_ID' => $u_ID[0], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'g_ID' => $_SESSION['g_ID']));
+		$stmt10->execute(array('u_ID' => $_SESSION['userid'], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'g_ID' => $_SESSION['g_ID']));
 	}
 	else {
 		$stmt9 = $pdo->prepare("INSERT INTO abstimmen (u_ID, datum, e_ID1, e_ID2, g_ID) VALUES (:u_ID, :datum, :e_ID1, :e_ID2, :g_ID)");
-		$stmt9->execute(array('u_ID' => $u_ID[0], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'e_ID2' => $e_ID2[0], 'g_ID' => $_SESSION['g_ID']));
+		$stmt9->execute(array('u_ID' => $_SESSION['userid'], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'e_ID2' => $e_ID2[0], 'g_ID' => $_SESSION['g_ID']));
 
 		$stmt10 = $pdo->prepare("UPDATE abstimmen SET e_ID1 = :e_ID1, e_ID2 = :e_ID2, g_ID = :g_ID  WHERE datum = :datum AND u_ID = :u_ID");
-		$stmt10->execute(array('u_ID' => $u_ID[0], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'e_ID2' => $e_ID2[0], 'g_ID' => $_SESSION['g_ID']));
+		$stmt10->execute(array('u_ID' => $_SESSION['userid'], 'datum' => $datum, 'e_ID1' => $e_ID1[0], 'e_ID2' => $e_ID2[0], 'g_ID' => $_SESSION['g_ID']));
 	}
 }
 
@@ -529,27 +532,43 @@ function top3() {
 	$stmt1 = $pdo->prepare("SELECT e_ID, COUNT(e_ID) AS ids FROM (SELECT e_ID1 AS e_ID FROM abstimmen WHERE g_ID = :g_ID UNION ALL SELECT e_ID2 AS e_ID FROM abstimmen WHERE g_ID = :g_ID)x GROUP BY e_ID ORDER BY ids DESC");
 	$stmt1->execute(array('g_ID' => $g_ID));
 	$rows = $stmt1->fetchAll(PDO::FETCH_ASSOC);
-	for ($i = 0; $i<3; $i++){
-		$stmt2 = $pdo->prepare("SELECT name FROM essen WHERE e_ID = :e_ID");
-		$stmt2->execute(array('e_ID' => $rows[$i]['e_ID']));
-		$essen = $stmt2->fetch();
-		$j = $i+1;
-		if(isset($essen[0])) {
-			$arr[] = $essen[0];
-			$_SESSION['top' . $j] = $essen[0];
+	$arr = null;
+	if(isset($rows[0]['e_ID'])) {
+		for ($i = 0; $i < 3; $i++) {
+			if(isset($rows[$i]['e_ID'])) {
+				$stmt2 = $pdo->prepare("SELECT name FROM essen WHERE e_ID = :e_ID");
+				$stmt2->execute(array('e_ID' => $rows[$i]['e_ID']));
+				$essen = $stmt2->fetch();
+				$j = $i + 1;
+				if (isset($essen[0])) {
+					$arr[] = $essen[0];
+					$_SESSION['top' . $j] = $essen[0];
+				}
+			}
 		}
 	}
+	else $arr[] = "Gebäck"; $_SESSION['top1'] = "Gebäck";
 	print json_encode($arr);
 }
 
 function verfuegbare_essen() {
 	require('includes/includeDatabase.php');
 
+	$arr = null;
 	$stmt1 = $pdo->prepare("SELECT name FROM essen ORDER BY name ASC");
 	$stmt1->execute();
 	foreach ($stmt1->fetchAll(PDO::FETCH_ASSOC) as $row)
 	{
-		if( ($row['name'] != $_SESSION['top1']) && ($row['name'] != $_SESSION['top2']) && ($row['name'] != $_SESSION['top3'])) $arr[] = $row['name'];
+		if(isset($_SESSION['top3'])) {
+			if(($row['name'] != $_SESSION['top1']) && ($row['name'] != $_SESSION['top2']) && ($row['name'] != $_SESSION['top3'])) $arr[] = $row['name'];
+		}
+		else if(isset($_SESSION['top2'])) {
+			if(($row['name'] != $_SESSION['top1']) && ($row['name'] != $_SESSION['top2'])) $arr[] = $row['name'];
+		}
+		else if(isset($_SESSION['top1'])) {
+			if($row['name'] != $_SESSION['top1']) $arr[] = $row['name'];
+		}
+		//if( ($row['name'] != $_SESSION['top1']) && ($row['name'] != $_SESSION['top2']) && ($row['name'] != $_SESSION['top3'])) $arr[] = $row['name'];
 	}
 	print json_encode($arr);
 }
@@ -617,4 +636,12 @@ function chat_speichern($nachricht) {
 	$stmt1 = $pdo->prepare("INSERT INTO chat (name, nachricht, g_ID) VALUES (:name, :nachricht, :g_ID)");
 	$result1 = $stmt1->execute(array('name' => $_SESSION['username'], 'nachricht' => $nachricht, 'g_ID' => $_SESSION['g_ID']));
 }
+
+function chat_delete() {
+	require('includes/includeDatabase.php');
+
+	$stmt1 = $pdo->prepare("DELETE FROM chat WHERE g_ID = :g_ID LIMIT 20");
+	$stmt1->execute(array('g_ID' => $_SESSION['g_ID']));
+}
+
 ?>

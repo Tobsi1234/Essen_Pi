@@ -36,7 +36,7 @@ require("includes/includeDatabase.php");
 				$.ajax({
 					type: "POST",
 					url: "procedures.php",
-					data: {callFunction: 'abstimmen', u_ID: u_ID, essen1: essenArr[0], datum: datum},
+					data: {callFunction: 'abstimmen', essen1: essenArr[0], datum: datum},
 					dataType: 'text',
 					success:function(data) {
 						window.location.reload();
@@ -47,7 +47,7 @@ require("includes/includeDatabase.php");
 			$.ajax({
 					type: "POST",
 					url: "procedures.php",
-					data: {callFunction: 'abstimmen', u_ID: u_ID, essen1: essenArr[0], essen2: essenArr[1], datum: datum},
+					data: {callFunction: 'abstimmen', essen1: essenArr[0], essen2: essenArr[1], datum: datum},
 					dataType: 'text',
 					success:function(data) {
 						window.location.reload();
@@ -278,7 +278,9 @@ require("includes/includeDatabase.php");
 			<?php
 			if(!isset($g_ID[0])) { //noch keine Gruppe?
 				?>
-				<h1>Bitte gründe eine Gruppe!</h1>
+				<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net</h1>
+				<br><br>
+				<h2>Um richtig loszulegen, gründe eine Gruppe oder lass dich von Freunden einladen.</h2>
 
 				<?php
 			}

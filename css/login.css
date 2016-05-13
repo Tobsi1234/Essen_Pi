@@ -1,28 +1,28 @@
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
 }
 
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 /*----------------------*/
 
 .cf:before, .cf:after {
-  content:"";
-  display:table;
+    content:"";
+    display:table;
 }
 
 .cf:after {
-  clear:both;
+    clear:both;
 }
 
 .cf {
-  zoom:1;
+    zoom:1;
 }
 .inputuser {
 
@@ -44,12 +44,12 @@ fieldset {
 }
 
 .labeluser {
-	padding-left:5px;
+    padding-left:5px;
 }
 
 .labelemail {
-	padding-left:15px;
-	padding-top:20px;
+    padding-left:15px;
+    padding-top:20px;
 }
 
 
@@ -57,7 +57,7 @@ fieldset {
 
     height: 34px;
     padding: 6px 2px;
-	width: 255px;
+    width: 255px;
     font-size: 14px;
     line-height: 1.42857143;
     color: #555;
@@ -73,58 +73,58 @@ fieldset {
 }
 
 .userchange {
-	/*padding-left:500px;*/
-position:relative;
-top: 50px;
-left: 35%;
-right: 25%;
-border-radius: 25px;
-border: 2px solid #73AD21;
-padding: 20px;
-margin: 100px;
-margin-left:0px;
-width:420px;
-height: 320px; 
+    /*padding-left:500px;*/
+    position:relative;
+    top: 10px;
+    left: 35%;
+    right: 25%;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    margin: 50px;
+    margin-left:0px;
+    width:420px;
+    height: 320px;
 }
 
 .userdelete {
-	/*padding-left:500px;*/
-position:relative;
-top: 50px;
-left: 35%;
-right: 25%;
-border-radius: 25px;
-border: 2px solid #73AD21;
-padding: 20px;
-margin: 100px;
-margin-left:0px;
-width:420px;
-height: 339px; 
+    /*padding-left:500px;*/
+    position:relative;
+    top: 20px;
+    left: 35%;
+    right: 25%;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    margin: 50px;
+    margin-left:0px;
+    width:420px;
+    height: 339px;
 }
 
 .usertable {
-	border:hidden;
+    border:hidden;
 }
 .usertable, td {
-	padding: 5px;
-	border:none;
-	background-color:white;
+    padding: 5px;
+    border:none;
+    background-color:white;
 }
 
 .bigcontainer{
-    
-	margin-left: 12%;
+
+    margin-left: 12%;
     top: 5%;
     margin-right: 5%;
-	
+
 }
 
 .rightcontainer {
-   width:50%;
-   float:right;
-   
+    width:50%;
+    float:right;
+
 }
-  
+
 /*----------------------*/
 
 
@@ -134,104 +134,104 @@ height: 339px;
 
 
 nav li {
-  float: left;          
+    float: left;
 }
 
 nav #login {
- 
-  /*-moz-box-shadow: 1px 0 0 #222;
-  -webkit-box-shadow: 1px 0 0 #444;
-  box-shadow: 1px 0 0 #444;  */
+
+    /*-moz-box-shadow: 1px 0 0 #222;
+    -webkit-box-shadow: 1px 0 0 #444;
+    box-shadow: 1px 0 0 #444;  */
 }
 
 
 
 
 nav #signup a {
-  -moz-border-radius: 0 3px 3px 0;
-  -webkit-border-radius: 0 3px 3px 0;
-  border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
 }
 
 nav #login-trigger {
-  -moz-border-radius: 3px 0 0 3px;
-  -webkit-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
 }
 
 nav #login-trigger:hover,
 nav #login .active,
 nav #signup a:hover {
-  /*background: #222;
-  color: #efefef; */
+    /*background: #222;
+    color: #efefef; */
 }
 
 nav #login-content {
-  border: solid 1px #337ab7;
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  z-index: 999;    
-  background: #444;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
-  background-image: -webkit-linear-gradient(top, #444, #000);
-  background-image: -moz-linear-gradient(top, #444, #000);
-  background-image: -ms-linear-gradient(top, #444, #000);
-  background-image: -o-linear-gradient(top, #444, #000);
-  background-image: linear-gradient(top, #444, #000);
-  padding: 15px;
-  -moz-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
-  -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
-  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
-  -moz-border-radius: 3px 0 3px 3px;
-  -webkit-border-radius: 3px 0 3px 3px;
-  border-radius: 3px 0 3px 3px;
+    border: solid 1px #337ab7;
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    z-index: 999;
+    background: #444;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+    background-image: -webkit-linear-gradient(top, #444, #000);
+    background-image: -moz-linear-gradient(top, #444, #000);
+    background-image: -ms-linear-gradient(top, #444, #000);
+    background-image: -o-linear-gradient(top, #444, #000);
+    background-image: linear-gradient(top, #444, #000);
+    padding: 15px;
+    -moz-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+    -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+    box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+    -moz-border-radius: 3px 0 3px 3px;
+    -webkit-border-radius: 3px 0 3px 3px;
+    border-radius: 3px 0 3px 3px;
 
     background: white;
     margin: 0;
     font-size: 12px;
-  
+
 }
 
 nav li #login-content {
-  right: 0;
-  width: 275px;  
+    right: 0;
+    width: 275px;
 }
 
 /*--------------------*/
 
 #inputs input {
-  background: #efefef;
-  padding: 6px 5px;
-  margin: 0 0 5px 0;
-  width: 238px;
- /* border: 1px solid #222222;*/
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  -moz-box-shadow: 0 1px 1px #efefef inset;
-  -webkit-box-shadow: 0 1px 1px #efefef inset;
-  box-shadow: 0 1px 1px #efefef inset;
+    background: #efefef;
+    padding: 6px 5px;
+    margin: 0 0 5px 0;
+    width: 238px;
+    /* border: 1px solid #222222;*/
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 1px #efefef inset;
+    -webkit-box-shadow: 0 1px 1px #efefef inset;
+    box-shadow: 0 1px 1px #efefef inset;
 }
 
 #inputs input:focus {
-  background-color: #fff;
-  border-color: #337ab7;
-  outline: none;
-  -moz-box-shadow: 0 0 0 1px #efefef inset;
-  -webkit-box-shadow: 0 0 0 1px #efefef inset;
-  box-shadow: 0 0 0 1px #efefef inset; 
+    background-color: #fff;
+    border-color: #337ab7;
+    outline: none;
+    -moz-box-shadow: 0 0 0 1px #efefef inset;
+    -webkit-box-shadow: 0 0 0 1px #efefef inset;
+    box-shadow: 0 0 0 1px #efefef inset;
 }
 
 /*--------------------*/
 
 #login #actions {
-  margin: 10px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
-#login #submit {        
-  background-color: #337ab7;
+#login #submit {
+    background-color: #337ab7;
     /*
   background-image: -webkit-gradient(linear, left top, left bottom, from(#d46a15), to(#bf4c24));
   background-image: -webkit-linear-gradient(top, #d46a15, #bf4c24);
@@ -239,103 +239,105 @@ nav li #login-content {
   background-image: -ms-linear-gradient(top, #d46a15, #bf4c24);
   background-image: -o-linear-gradient(top, #d46a15, #bf4c24);
   background-image: linear-gradient(top, #d46a15, #bf4c24); */
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px; 
-  text-shadow: 0 1px 0 rgba(0,0,0,.5);
-  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
- /* border: 1px solid #222222; */
-  float: left;
-  height: 30px;
-  padding: 0;
-  margin-right: 10px;
-  width: 100px;
-  cursor: pointer;
-  font: bold 14px Arial, Helvetica;
-  color: #efefef; 
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    /* border: 1px solid #222222; */
+    float: left;
+    height: 30px;
+    padding: 0;
+    margin-right: 10px;
+    width: 100px;
+    cursor: pointer;
+    font: bold 14px Arial, Helvetica;
+    color: #efefef;
 }
 
 #login #submit:hover,
 #login #submit:focus {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#bf4c24), to(#d46a15));
-  background-image: -webkit-linear-gradient(top, #bf4c24, #d46a15);
-  background-image: -moz-linear-gradient(top, #bf4c24, #d46a15);
-  background-image: -ms-linear-gradient(top, #bf4c24, #d46a15);
-  background-image: -o-linear-gradient(top, #bf4c24, #d46a15);
-  background-image: linear-gradient(top, #bf4c24, #d46a15);
-}    
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#bf4c24), to(#d46a15));
+    background-image: -webkit-linear-gradient(top, #bf4c24, #d46a15);
+    background-image: -moz-linear-gradient(top, #bf4c24, #d46a15);
+    background-image: -ms-linear-gradient(top, #bf4c24, #d46a15);
+    background-image: -o-linear-gradient(top, #bf4c24, #d46a15);
+    background-image: linear-gradient(top, #bf4c24, #d46a15);
+}
 
-#login #submit:active {        
-  outline: none;
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+#login #submit:active {
+    outline: none;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
 }
 
 #login #submit::-moz-focus-inner {
-  border: none;
+    border: none;
 }
 
 #login label {
-  float: left;
-  line-height: 30px;
-  color: #337ab7;
+    float: left;
+    line-height: 30px;
+    color: #337ab7;
 }
 
 #login label input {
-  position: relative;
-  top: 2px;
-  right: 2px;
+    position: relative;
+    top: 2px;
+    right: 2px;
 }
 
 #register {
-	/*padding-left:500px;*/
-position: absolute;
-top: 50%;
-left: 50%;
-margin-top: -100px;
-margin-left: -150px;
+    /*padding-left:500px;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
 }
 
 
 /* chat */
 #chat_border {
-height: 500px;
+    height: 500px;
 }
 
 #chat_ausgabe {
-height:400px;
-overflow:auto;
+    height:400px;
+    overflow:auto;
 }
 
 /* unused
 #chat_hr {
 width: 100%;
-height: 1px; 
-margin: 0 auto; 
+height: 1px;
+margin: 0 auto;
 margin-bottom: 2px;
 background: black;
 } */
 
 #nachricht {
-width:65%;
+    width:65%;
 }
 
 #neueLocation {
-	float:left;
-	width: 50%;
-	margin-top:-25px;
+    float:left;
+    width: 50%;
+    margin-top:-25px;
 }
 
 .weiß {
+    min-height:100%;
     background-color: white;
 }
 
-body {
+body, html {
     /* background-image: url("http://bilder.t-online.de/b/73/12/25/04/id_73122504/610/tid_da/sonnenbrille-raus-und-ab-ins-cafe-das-wochenende-wird-fuer-die-meisten-richtig-schoen-.jpg");
     background-size: 305px 171px; */
+    height:100%;
     background-color: #FF8000;
-    background-repeat: repeat;
+    background: linear-gradient(to right, #FF8000 0%, white 12%, white 88%, #FF8000 100%);
 }

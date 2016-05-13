@@ -143,6 +143,6 @@ CREATE TABLE `abstimmung_ergebnis` (
   `datum` date NOT NULL,
   `g_ID` int(10) NOT NULL,
   PRIMARY KEY (datum, g_ID),
-  CONSTRAINT `constraint_location2` FOREIGN KEY (`l_ID`) REFERENCES `location` (`l_ID`) ON UPDATE CASCADE,
+  CONSTRAINT `constraint_location2` FOREIGN KEY (`l_ID`) REFERENCES `location` (`l_ID`) ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT `constraint_gruppe2` FOREIGN KEY (`g_ID`) REFERENCES `gruppe` (`g_ID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

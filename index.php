@@ -153,7 +153,7 @@ include ("includes/includeBody.php");
 		?>
 			<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net</h1>
 			<br><br>
-			<h2>Um richtig loszulegen, gründe eine Gruppe und lass dich von Freunden einladen.</h2>
+			<h2>Um richtig loszulegen, gründe eine Gruppe oder lass dich von Freunden einladen.</h2>
 		<?php
 		}
 		else { //bereits eine Gruppe

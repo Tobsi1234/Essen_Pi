@@ -13,6 +13,8 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
 
+	<link rel="icon" href="includes/icon.png" type="image/vnd.microsoft.icon">
+
     <!-- Custom CSS -->
     <link href="css/one-page-wonder.css" rel="stylesheet">
     
@@ -110,12 +112,25 @@
 			success:function(data) {
 				json1 = JSON.parse(data);
 				refChatAusgabe.innerHTML = "";
+				if(Object.keys(json1).length > 40) deleteOldMsgs();
 				for(var i=0; i<Object.keys(json1).length; i++) {
 					json2 = JSON.parse(json1[i]);
 					refChatAusgabe.innerHTML += "<b>" + json2.name + "</b>: " + json2.nachricht + "<br>" + "<p style=\"font-size: 10px\" > am: " + json2.ts + "</p>";
 				}
 				json2 = JSON.parse(json1[Object.keys(json1).length - 1]);
 				scrollen();
+			}
+		});
+	}
+
+	function deleteOldMsgs() {
+		$.ajax({
+			type: "POST",
+			url: "procedures.php",
+			data: {callFunction: 'chat_delete'},
+			dataType: 'text',
+			success: function (data) {
+
 			}
 		});
 	}
