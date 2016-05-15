@@ -273,12 +273,12 @@ require("includes/includeDatabase.php");
 		?>
         <!-- First Featurette -->
         <div class="featurette" id="about">
-		 	<br><br>
+		 	<br>
 			<script> name_ausgeben(); </script>
 			<?php
 			if(!isset($g_ID[0])) { //noch keine Gruppe?
 				?>
-				<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net</h1>
+				<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net!</h1>
 				<br><br>
 				<h2>Um richtig loszulegen, gründe eine Gruppe oder lass dich von Freunden einladen.</h2>
 
@@ -286,9 +286,10 @@ require("includes/includeDatabase.php");
 			}
 			else { //bereits eine Gruppe
 			?>
-			<div class="col-md-7">
-				<div id="headline">
-				<h1>Abstimmung </h1><br>
+			<div class="col-md-7" style="font-size: 15px">
+				<div class="info">
+					<legend>Abstimmung</legend>
+					Auf dieser Seite kann für heute, morgen oder übermorgen abgestimmt werden. Es kann für bis zu zwei Essen abgestimmt werden.
 				</div>
 				<div style="float:left; width:30px;"><label>Datum: </label>
 				</div>
@@ -309,27 +310,22 @@ require("includes/includeDatabase.php");
 						<input class="form-control" type="text" id="name" maxlength="30" value="Name" style="margin-left:20px;" disabled>
 					</div>
 					<script> form_name(); </script> <br><br>
-					<br>
-					<div>
-						<h3><b>---------------Wähle bis zu zwei Essen---------------</b></h3>
-					</div>
-					<br>
 					<label for=""> Top 3 Essen: </label>
-					<input class="form-control" onclick="validate(); countCheckboxes();" type="checkbox" id="top1" name="essen" value="top1" style="margin-left:15px; display:none"> <label id="label_top1" for="top1" style="display:none">Top1 </label>
-					<input class="form-control" onclick="validate(); countCheckboxes();" type="checkbox" id="top2" name="essen" value="top2" style="margin-left:15px; display:none"> <label id="label_top2" for="top2" style="display:none">Top2 </label>
-					<input class="form-control" onclick="validate(); countCheckboxes();" type="checkbox" id="top3" name="essen" value="top3" style="margin-left:15px; display:none"> <label id="label_top3" for="top3" style="display:none">Top3 </label>
+					<input onclick="validate(); countCheckboxes();" type="checkbox" id="top1" name="essen" value="top1" style="margin-left:15px; display:none"> <label id="label_top1" for="top1" style="display:none">Top1 </label>
+					<input onclick="validate(); countCheckboxes();" type="checkbox" id="top2" name="essen" value="top2" style="margin-left:15px; display:none"> <label id="label_top2" for="top2" style="display:none">Top2 </label>
+					<input onclick="validate(); countCheckboxes();" type="checkbox" id="top3" name="essen" value="top3" style="margin-left:15px; display:none"> <label id="label_top3" for="top3" style="display:none">Top3 </label>
 					<br><label for=""> Weitere Essen: </label>
-					<input class="form-control" onclick="validate(); countCheckboxes(); coordinateSelects('start');" type="checkbox" id="sonstiges1" name="essen" value="Sonstiges1" style="margin-left:15px"> <label for=""></label>
+					<input onclick="validate(); countCheckboxes(); coordinateSelects('start');" type="checkbox" id="sonstiges1" name="essen" value="Sonstiges1" style="margin-left:15px"> <label for=""></label>
 
 					<select class="form-control" id="verfuegbare_essen" onchange="validate(); coordinateSelects($(this).attr('id')); countCheckboxes();">
 					</select>
 
-					<input class="form-control" onclick="validate(); countCheckboxes();" type="checkbox" id="sonstiges2" name="essen" value="Sonstiges2" style="margin-left:15px; display:none;" >
+					<input onclick="validate(); countCheckboxes();" type="checkbox" id="sonstiges2" name="essen" value="Sonstiges2" style="margin-left:15px; display:none;" >
 
 					<select class="form-control" id="verfuegbare_essen2" onchange="validate(); coordinateSelects($(this).attr('id')); countCheckboxes();" style="display:none">
 					</select>
 					<br>
-					<input class="form-control" onclick="validate(); countCheckboxes();" type="checkbox" id="doppelt" name="" value="doppelt" style="" title="Doppelt abstimmen (nur mit einem Essen kombinierbar)"> <label id="label_doppelt" for="doppelt" style=""  title="Doppelt abstimmen (nur mit einem Essen kombinierbar)">Essen doppelt gewichten</label>
+					<input onclick="validate(); countCheckboxes();" type="checkbox" id="doppelt" name="" value="doppelt" style="" title="Doppelt abstimmen (nur mit einem Essen kombinierbar)"> <label id="label_doppelt" for="doppelt" style=""  title="Doppelt abstimmen (nur mit einem Essen kombinierbar)">Essen doppelt gewichten</label>
 					<br><br>
 					<button type="submit" id="auswahl_speichern" class="btn btn-primary" disabled>Auswahl speichern</button>
 				</form>

@@ -129,13 +129,16 @@ else {
 	<div class="alert alert-danger" id="fehlermeldung" style="display:none">
 	</div>
 	<!-- First Featurette -->
-	<div class="featurette" id="about">
+	<div class="featurette" id="about" style="font-size: 17px">
+		<br>
 		<?php
 		if(!isset($g_ID[0])) { //noch keine Gruppe?
 			?>
-			<div id="headline">
-				<h1>Neue Gruppe anlegen: </h1><br>
+			<div class="info">
+				<legend>Gruppeneinstellungen</legend>
+				Auf dieser Seite kann eine Gruppe angelegt und Mitglieder hinzugefügt werden.
 			</div>
+			<br>
 			<div class="form-horizontal">
 				<form class="form-inline" id="formAnlegen" name="formAnlegen" action="" onsubmit="" method="post">
 					<label for="gruppenname"> Gruppenname: </label>
@@ -151,13 +154,17 @@ else {
 				<br><br>
 			</div>
 
-		<?php
+			<?php
 		}
 		else { //bereits eine Gruppe
-		?>
-			<div id="headline">
-				<h1><?php echo "Deine Gruppe: " . $gruppenname[0];?></h1><br>
+			?>
+			<div class="info">
+				<legend>Gruppeneinstellungen</legend>
+				Auf dieser Seite kann man Gruppenmitglieder hinzufügen oder aus der Gruppe austreten.
+				Tritt der Gruppenadmin aus, wird die Gruppe gelöscht.
 			</div>
+			<br>
+			<label>Deine Gruppe:</label> <?php echo $gruppenname[0];?><br>
 			<label>Gruppenmitglieder: </label>
 			<div id="gruppenmitglieder">
 				<?php
@@ -184,7 +191,7 @@ else {
 				<br><br>
 			</div>
 
-		<?php
+			<?php
 		} //ende php abfrage
 		?>
 

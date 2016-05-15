@@ -58,14 +58,14 @@
             }
         }
         if(!error) {
-            if (meinEssen && box.options.length < 10) {
+            if (meinEssen && box.options.length < 15) {
                 element = document.createElement("option");
                 element.appendChild(document.createTextNode(meinEssen));
                 box.appendChild(element);
                 $('#gewählt').css('display', 'table-row');
             }
             else {
-                alert("Höchstens 10 Essen pro Location möglich");
+                alert("Höchstens 15 Essen pro Location möglich");
             }
         }
         return false;
@@ -157,7 +157,7 @@
             <tr>
                 <td><label for="verfuegbare_essen">Essensmöglichkeiten:</label></td>
                 <td><select id="verfuegbare_essen" class="fancyform" name="verfuegbare_essen"></select></td>
-                <td style="text-align:right"><button type="button" class="btn btn-default" onclick="essen_zuweisen();" title="Maximal 10 Essen zur Location hinzufügen">Hinzufügen</button></td>
+                <td style="text-align:right"><button type="button" class="btn btn-default" onclick="essen_zuweisen();" title="Maximal 15 Essen zur Location hinzufügen">Hinzufügen</button></td>
             </tr>
             <tr id="gewählt" style="display:none">
                 <td><label for="verfuegbare_essen">Gewählt:</label></td>

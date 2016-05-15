@@ -151,7 +151,7 @@ include ("includes/includeBody.php");
 		<?php
 		if(!isset($g_ID[0])) { //noch keine Gruppe?
 		?>
-			<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net</h1>
+			<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net!</h1>
 			<br><br>
 			<h2>Um richtig loszulegen, gründe eine Gruppe oder lass dich von Freunden einladen.</h2>
 		<?php
