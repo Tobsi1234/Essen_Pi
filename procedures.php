@@ -10,7 +10,7 @@ if (isset($_POST['callFunction'])) {
 	switch ($_POST['callFunction']) {
 
 		case 'insertLocation':
-			insertLocation($_POST['p1'], $_POST['p2'], $_POST['p3']);
+			insertLocation(htmlspecialchars($_POST['p1']), $_POST['p2'], $_POST['p3']);
 			break;
 
 		case 'abstimmen':
@@ -19,7 +19,7 @@ if (isset($_POST['callFunction'])) {
 			break;
 
 		case 'insertEssen':
-			insertEssen($_POST['p1']);
+			insertEssen(htmlspecialchars($_POST['p1']));
 			break;
 
 		case 'reloadEssen':
@@ -547,7 +547,9 @@ function top3() {
 			}
 		}
 	}
-	else $arr[] = "Gebäck"; $_SESSION['top1'] = "Gebäck";
+	else {
+		$arr[] = "Gebäck"; $_SESSION['top1'] = "Gebäck";
+	}
 	print json_encode($arr);
 }
 

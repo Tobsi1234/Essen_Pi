@@ -160,8 +160,7 @@ else {
 			?>
 			<div class="info">
 				<legend>Gruppeneinstellungen</legend>
-				Auf dieser Seite kann man Gruppenmitglieder hinzufügen oder aus der Gruppe austreten.
-				Tritt der Gruppenadmin aus, wird die Gruppe gelöscht.
+				Füge Gruppenmitglieder zu deiner Gruppe hinzu oder trete aus deiner aktuellen Gruppe aus. Verlässt der Gruppenadmin eine Gruppe, wird die Gruppe gelöscht.
 			</div>
 			<br>
 			<label>Deine Gruppe:</label> <?php echo $gruppenname[0];?><br>

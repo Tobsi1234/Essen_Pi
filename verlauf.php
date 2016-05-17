@@ -180,9 +180,11 @@ include ("includes/includeBody.php");
 		<?php
 		if(!isset($_SESSION['g_ID'])) { //noch keine Gruppe?
 			?>
+		<div class="info">
 			<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net!</h1>
 			<br><br>
 			<h2>Um richtig loszulegen, gründe eine Gruppe oder lass dich von Freunden einladen.</h2>
+		</div>
 
 			<?php
 		}
@@ -191,7 +193,7 @@ include ("includes/includeBody.php");
 			<div>
 				<div class="info">
 					<legend>Verlauf</legend>
-					Auf dieser Seite werden alle Ergebnisse der Gruppe sowie die einzelnen Abstimmungen der Gruppenteilnehmer angezeigt.
+					Hier können alle vergangenen Ergebnisse eurer Gruppe sowie die einzelnen Abstimmungen der Gruppenteilnehmer eingesehen werden. Wähle einen Zeitraum, um die zugehörigen Abstimmungsergebnisse anzuzeigen.
 				</div>
 				<br>
 				<form id="verlauf" name="verlauf" action="" method="post" onsubmit="">

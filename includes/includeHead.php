@@ -13,7 +13,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
 
-	<link rel="icon" href="includes/icon.png" type="image/vnd.microsoft.icon">
+	<link rel="icon" href="includes/essenMaennchen.jpg" type="image/vnd.microsoft.icon">
 
     <!-- Custom CSS -->
     <link href="css/one-page-wonder.css" rel="stylesheet">

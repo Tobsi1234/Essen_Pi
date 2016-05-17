@@ -10,6 +10,33 @@ require("includes/includeDatabase.php");
 	include ("includes/includeHead.php");
 	?>
 
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+	<style>
+
+		.node {
+			cursor: pointer;
+		}
+
+		.node circle {
+			fill: #fff;
+			stroke: steelblue;
+			stroke-width: 3px;
+		}
+
+		.node text {
+			font: 14px sans-serif;
+		}
+
+		.link {
+			fill: none;
+			stroke: #ccc;
+			stroke-width: 2px;
+		}
+
+	</style>
+
 	<script language="javascript">
 		<!--
 
@@ -29,10 +56,11 @@ require("includes/includeDatabase.php");
 			refDatum = document.getElementById('datum');
 			//refDatum.innerHTML = datum_heute;
 			//$.post('index.php', {variable: datum_heute});
-
 		}
+
 		// Hole bei jedem Neuladen der Seite die Abstimmung von heute
 		function holeAbstimmungenHeute() {
+
 			$.ajax({
 				type    : "POST",
 				url     : "procedures.php",
@@ -41,6 +69,7 @@ require("includes/includeDatabase.php");
 				success : function (data) {
 
 					var abstimmungen = JSON.parse(data);
+					var treeData = [];
 
 					if(abstimmungen.toString() === '') {
 						$("#essenErgebnis").attr('class', 'alert alert-danger fade in');
@@ -48,20 +77,39 @@ require("includes/includeDatabase.php");
 					}
 					else {
 
-						$('#abstimmungen').html("");
+						//$('#abstimmungen').html("");
 
 						for (var i = 0; i < abstimmungen.length; i++) {
 
-							if (abstimmungen[i]['essen1'] === abstimmungen[i]['essen2']) {
-								$('#abstimmungen').append("<h4><b>" + abstimmungen[i]['username'] + "</b>" + " hat <b>doppelt</b> für das Essen " + "<b>" + abstimmungen[i]['essen1'] + "</b>" + "</b>" + " abgestimmt.</h4><br>");
+							var username = abstimmungen[i]['username'];
+							var essen1 = abstimmungen[i]['essen1'];
+
+							if (abstimmungen[i]['essen2'] != null) var essen2 = abstimmungen[i]['essen2'];
+							/*if (abstimmungen[i]['essen1'] === abstimmungen[i]['essen2']) {
+							 $('#abstimmungen').append("<h4><b>" + abstimmungen[i]['username'] + "</b>" + " hat <b>doppelt</b> für das Essen " + "<b>" + abstimmungen[i]['essen1'] + "</b>" + "</b>" + " abgestimmt.</h4><br>");
+							 }
+							 else if (abstimmungen[i]['essen2'] != null) {
+							 $('#abstimmungen').append("<h4><b>" + abstimmungen[i]['username'] + "</b>" + " hat für die Essen " + "<b>" + abstimmungen[i]['essen1'] + "</b>" + " und " + "<b>" + abstimmungen[i]['essen2'] + "</b>" + " abgestimmt.</h4><br>");
+							 }
+							 else {
+							 $('#abstimmungen').append("<h4><b>" + abstimmungen[i]['username'] + "</b>" + " hat <b>nur</b> für das Essen " + "<b>" + abstimmungen[i]['essen1'] + "</b>" + "</b>" + " abgestimmt.</h4><br>");
+							 }*/
+
+							treeData[i] = [];
+							treeData[i]['name'] = username;
+							treeData[i]['children'] = [];
+							treeData[i]['children'][0] = [];
+							treeData[i]['children'][0]['name'] = essen1;
+							if (abstimmungen[i]['essen2'] != null) {
+								treeData[i]['children'][1] = [];
+								treeData[i]['children'][1]['name'] = essen2;
 							}
-							else if (abstimmungen[i]['essen2'] != null) {
-								$('#abstimmungen').append("<h4><b>" + abstimmungen[i]['username'] + "</b>" + " hat für die Essen " + "<b>" + abstimmungen[i]['essen1'] + "</b>" + " und " + "<b>" + abstimmungen[i]['essen2'] + "</b>" + " abgestimmt.</h4><br>");
-							}
-							else {
-								$('#abstimmungen').append("<h4><b>" + abstimmungen[i]['username'] + "</b>" + " hat <b>nur</b> für das Essen " + "<b>" + abstimmungen[i]['essen1'] + "</b>" + "</b>" + " abgestimmt.</h4><br>");
-							}
+
+							/*alert(treeData[i]['name']);
+							 alert(treeData[i]['children'][0]);
+							 alert(treeData[i]['children'][1]);*/
 						}
+						generateTree(treeData);
 						berechneErgebnisHeute();
 					}
 				}
@@ -151,9 +199,11 @@ include ("includes/includeBody.php");
 		<?php
 		if(!isset($g_ID[0])) { //noch keine Gruppe?
 		?>
+		<div class="info">
 			<h1>Herzlich Willkommen auf wir-haben-hunger.ddns.net!</h1>
 			<br><br>
 			<h2>Um richtig loszulegen, gründe eine Gruppe oder lass dich von Freunden einladen.</h2>
+		</div>
 		<?php
 		}
 		else { //bereits eine Gruppe
@@ -162,12 +212,13 @@ include ("includes/includeBody.php");
 		<script> datum(); //datum init</script>
 		<script>holeAbstimmungenHeute();</script>
 
-		<div class="col-md-7">
+		<div class="col-md-7" id="contentAbstimmungen">
 			<div id="headline">
 				<h1 style="text-align: center">Auswertung für Gruppe "<?php echo $gruppenname[0];?>"</h1><br>
 			</div>
 			<div id="essenErgebnis" class="alert alert-success fade in"> </div><br>
-			<div id="abstimmungen"></div>
+			<div id="abstimmungenTree" style="margin-top: -10px"></div>
+			<!-- <div id="abstimmungen"></div> -->
 			<br><br>
 		</div>
 
@@ -189,6 +240,8 @@ include ("includes/includeBody.php");
 			chat_laden(); // läd chat jede sekunde neu.
 			chat_verspätet();
 		</script>
+		<script src="js/tree.js"></script>
+
 		<?php
 		} //ende php abfrage
 		?>
@@ -198,9 +251,12 @@ include ("includes/includeBody.php");
 
 </div>
 <div class="container weiß" id="loggedOutSeite" style="display: none">
-	<h1> Willkommen auf wir-haben-hunger.ddns.net</h1>
-	<br><br>
-	<h2> Jetzt schnell kostenlos <a href="registrieren.php"> registrieren</a>!</h2>
+	<div class="info" style="text-align: center">
+		<h1> Willkommen auf wir-haben-hunger.ddns.net</h1> <img src="includes/essenMaennchen.jpg" style="max-width: 99%; position:center"/>
+		<br><br>
+		<h2> Jetzt schnell kostenlos <a href="registrieren.php"> registrieren</a>!</h2>
+	</div>
+
 </div>
 
 <?php

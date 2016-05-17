@@ -60,8 +60,8 @@ if(isset($_GET['pwchange'])) {
 
         $passwort_hash = password_hash($passwort2, PASSWORD_DEFAULT);
 
-        $stmt2 = $pdo->prepare("UPDATE users SET passwort = :passwort");
-        $result2 = $stmt2->execute(array('passwort' => $passwort_hash));
+        $stmt2 = $pdo->prepare("UPDATE users SET passwort = :passwort WHERE u_ID = :u_ID");
+        $result2 = $stmt2->execute(array('passwort' => $passwort_hash, 'u_ID' => $_SESSION['userid']));
         $_SESSION['passwort'] = $passwort2;
         ?>
         <div class="alert alert-success fade in">
