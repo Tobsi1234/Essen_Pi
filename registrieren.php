@@ -107,35 +107,38 @@ if(isset($_GET['register'])) {
  
 if($showFormular) {
 ?>
-<div class="userchange weiß" id="register">
-    <form class="form-horizontal" action="?register=1" method="post">
-	<div class="form-group">
-		<label class="col-lg-4"> Benutzername: </label>
-		<div class="col-lg-8">
-			<input class="form-control" type="text" maxlength="30" name="name" required>
+<div class="container weiß">
+
+	<div class="userchange" id="register">
+		<form class="form-horizontal" action="?register=1" method="post">
+		<div class="form-group">
+			<label class="col-lg-4"> Benutzername: </label>
+			<div class="col-lg-8">
+				<input class="form-control" type="text" maxlength="30" name="name" required>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-lg-4"> E-Mail: </label>
-		<div class="col-lg-8">
-			<input class="form-control" type="email" maxlength="50" name="email" required>
+		<div class="form-group">
+			<label class="col-lg-4"> E-Mail: </label>
+			<div class="col-lg-8">
+				<input class="form-control" type="email" maxlength="50" name="email" required>
+			</div>
 		</div>
-	</div>
-    <div class="form-group">
-		<label class="col-lg-4">Passwort: </label>
-		<div class="col-lg-8">
-			<input class="form-control" type="password"  maxlength="20" name="passwort" required>
+		<div class="form-group">
+			<label class="col-lg-4">Passwort: </label>
+			<div class="col-lg-8">
+				<input class="form-control" type="password"  maxlength="20" name="passwort" required>
+			</div>
 		</div>
-	</div>
-    <div class="form-group">
-		<label class="col-lg-4">Passwort wiederholen: </label>
-		<div class="col-lg-8">
-			<input class="form-control" type="password"  maxlength="20" name="passwort2" required>
+		<div class="form-group">
+			<label class="col-lg-4">Passwort wiederholen: </label>
+			<div class="col-lg-8">
+				<input class="form-control" type="password"  maxlength="20" name="passwort2" required>
+			</div>
 		</div>
+		<input class="btn btn-default" type="submit" value="Abschicken">
+		</form>
 	</div>
-    <input class="btn btn-default" type="submit" value="Abschicken">
-    </form>
-</div> 
+</div>
 <?php
 } //Ende von if($showFormular)
 
